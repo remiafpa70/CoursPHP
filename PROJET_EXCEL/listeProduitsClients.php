@@ -1,4 +1,4 @@
-<!DOCTYPE html> <!--Permettre de visualiser quel employé a passé quelles commandes et à quels clients
+<!DOCTYPE html> <!--Permettre de visualiser quel employé a passé quelles commandes et à quels clients.
 -->
 <html lang="fr">
   <head>
