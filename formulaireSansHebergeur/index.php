@@ -86,12 +86,12 @@ if(!empty($_POST['nom'])
 && (!empty($_POST['site']))
 && (!empty($_POST['telephone']))
 && (!empty($_POST['semestre'])) 
-// && (!empty($_POST['niveauhtml']) 
-// && (!empty($_POST['connaissances']) 
+&& (!empty($_POST['niveauhtml'])) 
+&& (!empty($_POST['connaissances'])) 
 )
 {
 echo "ligne 93";
-var_dump($_POST);
+//var_dump($_POST);
 //  étape 5 ->cela permet de recupérer le champ nom en enlevant tous les caractères spéciaux saisis par l'utilisateur
 $nom = $idcom->escape_string($_POST['nom']); 
 $prenom = $idcom->escape_string($_POST['prenom']);
@@ -103,8 +103,15 @@ $email = $idcom->escape_string($_POST['email']);
 $site = $idcom->escape_string($_POST['site']);
 $telephone = $idcom->escape_string($_POST['telephone']);
 $semestre = $_POST['semestre'];
-// $niveauhtml = $_POST['niveauhtml'];
-// $connaissances = $_POST['connaissances'];
+$niveauhtml = $_POST['niveauhtml'];
+
+$result = "";
+        foreach ($_POST['connaissances'] as $val) {
+            $result .= $val . '/';
+        }
+$connaissances = $idcom->escape_string($result);
+//var_dump($result);
+//$connaissances = $_POST['connaissances'];
 
 
 
@@ -120,7 +127,9 @@ $semestre = $_POST['semestre'];
   email,
   site,
   telephone,
-  semestre ) 
+  semestre,
+  niveauhtml,
+  connaissances ) 
   VALUES('$nom',
           '$prenom',
           '$ladate',
@@ -130,8 +139,9 @@ $semestre = $_POST['semestre'];
           '$email',
           '$site',
           '$telephone',
-          '$semestre'
-          )"; 
+          '$semestre',
+          '$niveauhtml',
+          '$connaissances')"; 
 
 
     //  étape 7 ->   envoyer la requêt au serveur utilisant la fonction query de ma classe MySQL

@@ -11,7 +11,8 @@
   <h1>  Mon premier formulaire</h1>
 <fieldset id="main">
 <legend>Notre formulaire :</legend>
-<form action="index.php" method="post"> <!--à voir -->
+<form action="<?= $_SERVER['PHP_SELF'] ?> " method="post"
+enctype="application/x-www-form-urlencoded" > <!--à voir -->
 <label>Nom:</label>
 <input type="text" name="nom" value="VotreNom"><br><br>
 <label>Prénom:</label>
@@ -28,7 +29,7 @@
 <br><br>
 <label>Code postal:</label><input type="text" pattern="[0-9]{5}" placeholder="Saissisez 5 chiffres maximum" name="cp" value="94000">
 <br><br>
-<label>E-mail:</label><input type="email" name="email" value="Votreadresselectronique@gmail.com">
+<label>E-mail:</label><input type="email" name="email" value="remiafpa70@gmail.com">
 <br><br>
 <label>Site:</label><input type="url" name="site" value="http://www.Votre.page.Web.com">
 <br><br>
@@ -60,107 +61,70 @@
 </form>
 <?php
 
-// étape 1 -> créer la base de donnée dans MySQL
 
-// étape 1 -> inclure les paramètres de connexion que l'on a définit dans le fichier myparam.inc.php
-include_once('myparam.inc.php');
+if(isset($_POST['nom']) 
+&& isset($_POST['prenom'])
+&& isset($_POST['ladate'])
+&& isset($_POST['lieu'])
+&& isset($_POST['adressepostale'])
+&& isset($_POST['cp'])
+&& isset($_POST['email'])
+&& isset($_POST['site'])
+&& isset($_POST['telephone'])
+&& isset($_POST['semestre'])
+&& isset($_POST['niveauhtml'])){
 
-// étape 2 -> Connexion au serveur MySQL
-$idcom = new mysqli(MYHOST,MYUSER,MYPASS,"formulaire");
+  //L'objet du mail
+  $objet = "Confirmation de votre message sur GeekTeam";
 
-if(!$idcom){
-    echo "connexion impossible";
-    exit(); // arrçete tout et permet de sortir du script
+  $texte ="Nous avons bien reçu votre message \n";
+  $texte .= "Votre nom est : ".$_POST['nom']."\n";
+  $texte .= "Votre prénom est : ".$_POST['prenom']."\n";
+  $texte .= "Votre date de naissance est : ".$_POST['ladate']."\n";
+  $texte .= "Votre adresse postale est : ".$_POST['adressepostale']."\n";
+  $texte .= "Votre code postale est : ".$_POST['cp']."\n";
+  $texte .= "Votre email est : ".$_POST['email']."\n";
+  $texte .= "Votre site est : ".$_POST['site']."\n";
+  $texte .= "Votre téléphone est : ".$_POST['telephone']."\n";
+  $texte .= "Votre semestre est : ".$_POST['semestre']."\n";
+  $texte .= "Votre niveau de connaissnce est : ".$_POST['niveauhtml']."\n";
+  $texte .= "Cordialement \n";
+  $texte .= "L'équipe Geek Team";
+
+  $corps = '<html>
+  <head>
+  <title>Envoi de mail HTML</title>
+  </head>
+  <body>
+  <h1>La bonne nouvelle du mois</h1>
+  <b>Sortie de PHP 7 version finale!</b>
+  <img src=http://www.funhtml.com/php5/C12/php.gif />
+  <p>Charger un installeur pour une utilisation en local<br />
+  <a href=http://www.mamp.info>Le site MAMP pour Mac</a><br />
+  <a href=http://www.wampserver.com>Le site Wampserver pour Windows</a>
+  </p>
+  
+  </body>
+  </html>';
+
+  //Ecriture des entête
+  $entete = 'MIME-Version: 1.0'."\n";
+  $entete .= 'Content-Type: text/html;charset=utf-8'."\n";
+  $entete .= "From: Geek Team <minkoueobamea@gmail.com>";
+  //$entete .= "cc: contact@geekteam.fr";
+
+
+  //Fonction mail qui permet l'envoie d'emails
+  if(mail($_POST['email'], $objet, $corps, $entete)){
+      
+      echo "Super votre message a bien été envoyé";
+  }
+  else{ echo "désolé votre message n'a pas été envoyé, Merci d'essayer à nouveau";}
 }
-
-// étape 4 -> la connexion est établie alors on vérifie
-// que les champs du formulaire ne sont pas vides
-// permet de récupérer ce qui a été saisi dans les champs nom,prenom,... non vides
-if(!empty($_POST['nom']) 
-&& (!empty($_POST['prenom'])) 
-&& (!empty($_POST['ladate']))
-&& (!empty($_POST['lieu'])) 
-&& (!empty($_POST['adressepostale']))
-&& (!empty($_POST['cp']))
-&& (!empty($_POST['email']))
-&& (!empty($_POST['site']))
-&& (!empty($_POST['telephone']))
-&& (!empty($_POST['semestre'])) 
-&& (!empty($_POST['niveauhtml'])) 
-&& (!empty($_POST['connaissances'])) 
-)
-{
-echo "ligne 93";
-//var_dump($_POST);
-//  étape 5 ->cela permet de recupérer le champ nom en enlevant tous les caractères spéciaux saisis par l'utilisateur
-$nom = $idcom->escape_string($_POST['nom']); 
-$prenom = $idcom->escape_string($_POST['prenom']);
-$ladate = $_POST['ladate'];
-$lieu = $_POST['lieu'];
-$adressepostale = $idcom->escape_string($_POST['adressepostale']);
-$cp = $idcom->escape_string($_POST['cp']);
-$email = $idcom->escape_string($_POST['email']);
-$site = $idcom->escape_string($_POST['site']);
-$telephone = $idcom->escape_string($_POST['telephone']);
-$semestre = $_POST['semestre'];
-$niveauhtml = $_POST['niveauhtml'];
-
-$result = "";
-        foreach ($_POST['connaissances'] as $val) {
-            $result .= $val . '/';
-        }
-$connaissances = $idcom->escape_string($result);
-//var_dump($result);
-//$connaissances = $_POST['connaissances'];
-
-
-
-
-
-  //  étape 6 ->   on écrit les requètes
-  $requete = "INSERT INTO formulaire(nom,
-  prenom,
-  ladate,
-  lieu,
-  adressepostale,
-  cp,
-  email,
-  site,
-  telephone,
-  semestre,
-  niveauhtml,
-  connaissances ) 
-  VALUES('$nom',
-          '$prenom',
-          '$ladate',
-          '$lieu',
-          '$adressepostale',
-          '$cp',
-          '$email',
-          '$site',
-          '$telephone',
-          '$semestre',
-          '$niveauhtml',
-          '$connaissances')"; 
-
-
-    //  étape 7 ->   envoyer la requêt au serveur utilisant la fonction query de ma classe MySQL
-    $result = $idcom->query($requete);  
-
-    //  étape 8 ->   on vérifie si la requête a bien été executée au niveau du serveur MySQL
-
-    if($result){
-        echo "Vous avez bien été enregistré au numéro :".$idcom->insert_id;
-    }
-    else {echo "Erreur ".$idcom->error;}
-
-    //  étape 9 ->   on ferme la connexion
-    $idcom->close();
-}
-//else {echo "veuillez remplir le formulaire";}
-
-
 ?>
+
+  </body>
+  </html>
 
 <br>
 <br>
