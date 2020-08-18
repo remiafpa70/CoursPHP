@@ -30,7 +30,7 @@ include_once("myparam.inc.php"); // inclus le fichier"x"
 // echo "connexion avec myparam.inc.php ok";
 
 
-$idcom = new mysqli(MYHOST,MYUSER,MYPASS, 'categories'); // bbd MySQL
+$idcom = new mysqli(MYHOST,MYUSER,MYPASS, "categories"); // bbd MySQL
 // echo "test connexion avec bbd";
 
 if (!$idcom) 

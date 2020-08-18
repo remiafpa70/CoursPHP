@@ -98,7 +98,7 @@ if(isset($_POST['nom'])
   <body>
   <h1>La bonne nouvelle du mois</h1>
   <b>Sortie de PHP 7 version finale!</b>
-  <img src=http://www.funhtml.com/php5/C12/php.gif />
+  <img src=http://www.funhtml.com/php5/C12/php.gif />  
   <p>Charger un installeur pour une utilisation en local<br />
   <a href=http://www.mamp.info>Le site MAMP pour Mac</a><br />
   <a href=http://www.wampserver.com>Le site Wampserver pour Windows</a>

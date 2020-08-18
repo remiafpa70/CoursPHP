@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>  <!--ce code permet d'inserrer des informations dans une base de données
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
