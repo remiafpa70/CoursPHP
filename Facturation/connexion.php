@@ -6,7 +6,9 @@
 <body>
 <h1>Connexion</h1>
 
-<form action="<?=$_SERVER['PHP_SELF'] ?> " method="post"> <!--$_SERVER['PHP_SELF'] cette variable avec ce paramètre remplace le nom du fichier utilisé ici moncompte.php c'est plus universel et si on copie le code cette ligne reprendra automatiquement la page en cours-->
+
+<!--$_SERVER  ['PHP_SELF'] cette variable avec ce paramètre remplace le nom du fichier utilisé ici moncompte.php c'est plus universel et si on copie le code cette ligne reprendra automatiquement la page en cours-->
+<form action="<?=$_SERVER['PHP_SELF'] ?> " method="post"> 
 
 <input type="test" name="pseudo" placeholder="votre pseudo">
 <input type="test" name="password" placeholder="votre mot de passe">
@@ -14,12 +16,19 @@
 </form>
 
 <?php
+
+
+echo "repère A";
+
 // étape 1 -> inclure les paramètres de connexion que l'on a définit dans le fichier myparam.inc.php
 include_once('myparam.inc.php');
 
+echo "repère C";
 // étape 2 -> Connexion au serveur MySQL
-$idcom = new mysqli(MYHOST,MYUSER,MYPASS,"facturation");
 
+$idcom = new mysqli(MYHOST,MYUSER,MYPASS,"facturation");
+// var_dump($idcom);
+// die;
 if(!$idcom){
     echo "connexion impossible";
     exit(); // arrçete tout et permet de sortir du script
@@ -45,7 +54,7 @@ $password = $idcom->escape_string($_POST['password']);
 
 
   //  étape 6 ->   on écrit les requètes
-  $requete = "SELECT id_membre FROM membres WHERE 'pseudo'=$pseudo AND 'password'=$password"; 
+  $requete = "SELECT id_membre FROM membres WHERE pseudo = '$pseudo' and password = '$password'"; 
 
 
     //  étape 7 ->   envoyer la requêt au serveur utilisant la fonction query de ma classe MySQL
@@ -62,7 +71,7 @@ $password = $idcom->escape_string($_POST['password']);
     $idcom->close();
 }
 //else {echo "veuillez remplir le formulaire";}
-?>
+
 
 if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
     if ($_POST['pseudo']==$pseudo && $_POST['password']==$password) {
