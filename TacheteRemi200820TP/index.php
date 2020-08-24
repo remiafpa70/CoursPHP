@@ -1,20 +1,61 @@
 <?php
-session_start();
-if(isset($_SESSION['pseudo']) && isset($_SESSION['id_membre'])){
-    $id_membre = $_SESSION['id_membre'];
+// session_start();
+// if(isset($_SESSION['pseudo']) && isset($_SESSION['id_membre'])){
+//     $id_membre = $_SESSION['id_membre'];
 
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE html>  <!--type de langage ici html et éventuellemnt sa version-->
 <html lang="fr">
-<head>
-    <meta charset="utf-8"/>
-    <title>Mon formulaire</title>
-    <link rel="stylesheet" href=styles.css>
+>
+<head>  <!--entête du document, partie non visible ou l'on peut cacher des informations que l'on ne veut pas voir à l'écran comme le description de notre site-->
+    <meta charset="utf-8"/>  <!--type de traitemenent du texte pour préciser que nous souhaitons régler l'encodage des caractères sur UTF-8-->
+    <title>TACHETETOU</title>  <!--titre de l'onglet de la barre de recherche-->
+    <meta name="description" content="crétion de tableaux automatiques">  <!--permet une prise le référencement par les moteurs de recherche-->
+    <link rel="stylesheet" href="styles.css">  <!--permet de faire un lien avec la page en question-->
 </head>
 
-<body>
-<header></header>
+<body>   <!--définit, cette fois, le corps de votre document, c'est la partie visible de votre page web, c'est à cet endroit que nous mettrons du texte, des images, et toute autre information-->
+<h1>Bienvenu chez TACHETETOU</h1> <!--titre de la page (taille 1) par convention & seul titre pour le référencement-->
+        <p>mon premier paragraphe de texte qui l'accompagne !!</p>  <!--paragraphe (nous pouvons en mettre autant qu'on le souhaite !)-->
+        
+        
+        <nav>  <!--permet de prévoir un emplacement (ou une zone) pour votre menu de navigation. En général, nous y retrouvons des liens.-->
+             
+        </nav>
+         
+        <section><!--permettant de prévoir un emplacement (ou une zone) pour le contenu de votre site web. Nous y retrouverons plutôt un titre, du texte, des images, etc-->
+            <div><!--permettant de prévoir un emplacement (ou une zone) quelconque de votre site web. L’élément div peut regrouper tout et n’importe quoi, alors que l’élément section a plutôt été pensé pour regrouper du contenu apparenté-->
+                <span><!--permet de prévoir un petit emplacement secondaire, on l'utilise souvent à l'intérieur d'une autre zone. L’élément span peut regrouper tout et n’importe quoi, il s'agit d'une zone secondaire d'information-->
+                 
+                </span>
+            </div>
+        </section>
+         
+        <article><!--permet de prévoir une zone de texte-->
+             
+        </article>
+         
+        <footer>
+         
+        </footer>
+             
+        </nav>
+         
+        <section>
+            <div>
+                <span>
+                 
+                </span>
+            </div>
+        </section>
+         
+        <article>
+             
+        </article>
+         
+
+        <!-- <header></header>
 <h1> BIENVENU CHEZ TACHETE</h1>
 <fieldset id="main">
     <legend>Notre formulaire :</legend>
@@ -68,81 +109,14 @@ if(isset($_SESSION['pseudo']) && isset($_SESSION['id_membre'])){
         </fieldset>
         <br><br>
         <input type="submit" name="valider" value=" Envoyer "> &nbsp&nbsp&nbsp
-        <input type="reset" value="Annuler">
+        <input type="reset" value="Annuler"> -->
     </form>
 </fieldset>
 <br>
 
-<?php
-//Créer la base de données
-include_once 'myparam.inc.php';
-//Connexion au serveur de la bdd
-$idcom = new mysqli(MYHOST, MYUSER, MYPASS, "formulaire");
 
-//Test si la connexion est valide
-if (!$idcom) {
-    echo "Connexion impossible";
-    exit();
-} 
-if(!empty($_POST['nom']) 
-         && !empty($_POST['prenom']) 
-         && !empty($_POST['ladate']) 
-         && !empty($_POST['lieu'])
-         && !empty($_POST['adressepostale']) 
-         && !empty($_POST['cp']) 
-         && !empty($_POST['email']) 
-         && !empty($_POST['site'])
-         && !empty($_POST['telephone'])
-         ){
-        $nom = $idcom->escape_string($_POST['nom']);
-        $prenom = $idcom->escape_string($_POST['prenom']);
-        $datenaissance = $_POST['ladate'];
-        $lieu = $idcom->escape_string($_POST['lieu']);
-        $adressepostale = $idcom->escape_string($_POST['adressepostale']);
-        $cp = $idcom->escape_string($_POST['cp']);
-        $email = $idcom->escape_string($_POST['email']);
-        $site = $idcom->escape_string($_POST['site']);
-        $telephone = $idcom->escape_string($_POST['telephone']);
-        $semestre = $_POST['semestre'];
-        $niveauhtml = $_POST['niveauhtml'];
 
-        $result = "";
-        foreach ($_POST['connaissances'] as $val) {
-            $result .= $val . ',';
-        }
-        $connaissances = $idcom->escape_string($result);
-
-        //Requete
-        $requete = "Insert Into utilisateurs (nom, prenom,  ladate,  lieu, adressepostale, cp, email, site, telephone, semestre, niveauhtml, connaissances )
-                VALUES
-                ('$nom', '$prenom', '$datenaissance ',  '$lieu','$adressepostale', '$cp', '$email', '$site', '$telephone', '$semestre', '$niveauhtml', '$connaissances')";
-
-        //Envoyer la requete
-        $result = $idcom->query($requete);
-
-        //Vérifier que la requete est bien éxécutée
-        if ($result) {
-            //echo "Vous avez bien été enregistré au numéro :" . $idcom->insert_id;
-            echo "<script language=\"javascript\">";
-            echo "alert('Vous avez bien été enregistré au numéro :.$idcom->insert_id' )";
-            echo"</script>";
-        } else {
-            echo "Erreur " . $idcom->error;
-        }
-
-        //Fermer la connexion au serveur
-        $idcom->close();
-    }
-
-    else {
-        //echo "Veuillez remplir la formulaire";
-        echo "<script language=\"javascript\">";
-        echo "alert('Veuillez remplir la formulaire')";
-        echo"</script>";
-    }
-
-?>
-
-<footer> Formulaire réalisé dans le cadre du TP 2 de la formation de développeurs intégrateurs et codeurs web</footer>
+<footer> Site web édité par la marque REMS</footer>
+<!--permet de prévoir un emplacement (ou une zone) pour le bas de votre site web. En général, nous y retrouvons des liens administratifs (type: mentions légales, plan du site, Conditions Générales, etc), un copyright, etc.-->
 </body>
 </html>

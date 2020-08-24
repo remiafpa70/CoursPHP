@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Inscription </title>
+        <title>ADMINISTRATEUR</title>
         
     </head>
 
     <body>
-    <h1>Inscription </h1>
+    <h1>ADMINISTRATEUR-->Inscription d'un nouvel utilisateur</h1>
 
     <form action="<?= $_SERVER['PHP_SELF'] ?> " method="post">
         <input type="email" name="email" placeholder="Votre adresse email">  

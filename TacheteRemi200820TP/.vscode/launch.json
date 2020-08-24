@@ -1,0 +1,9 @@
+
+{
+    "version": "0.2.0",
+    "command": "chrome",    
+    "windows": {
+        "command": "chrome.exe"
+    },
+    "args": ["C:\\wamp64\\www\\CoursPHP\\TacheteRemi200820TP\\index.php"]
+}

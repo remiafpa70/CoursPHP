@@ -2,17 +2,17 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <title>Mon formulaire</title>
+    <title>Mon formulaire de contact</title>
     <link rel="stylesheet" href=styles.css>
   </head>
   
   <body>
   <header></header>
-  <h1>  Mon premier formulaire</h1>
+  <h1> Bienvenu sur notre formulaire de contact</h1>
 <fieldset id="main">
 <legend>Notre formulaire :</legend>
-<form action="<?= $_SERVER['PHP_SELF'] ?> " method="post"
-enctype="application/x-www-form-urlencoded" > <!--à voir -->
+<!-- <form action="<?= $_SERVER['PHP_SELF'] ?> " method="post"
+enctype="application/x-www-form-urlencoded" > 
 <label>Nom:</label>
 <input type="text" name="nom" value="VotreNom"><br><br>
 <label>Prénom:</label>
@@ -39,7 +39,7 @@ enctype="application/x-www-form-urlencoded" > <!--à voir -->
 <label>Semestre:</label> 
 <select name="semestre" size = 3>
          <option>S1</option>
-         <option selected>S2</option> <!--Selection par défaut du choix S2 -->
+         <option selected>S2</option> 
          <option>S3</option>
          <option>S4</option>
       </select>   
@@ -49,49 +49,49 @@ enctype="application/x-www-form-urlencoded" > <!--à voir -->
 <br><br>
 <fieldset id="fconnaissances">
 <legend>Connaissances: </legend>
-<input type="checkbox" checked="checked" name="connaissances[]" value="HTML">HTML <!--Selection par défaut du choix HTML -->
+<input type="checkbox" checked="checked" name="connaissances[]" value="HTML">HTML 
 <input type="checkbox" name="connaissances[]" value="CSS">CSS
 <input type="checkbox" name="connaissances[]" value="Formulaires">Formulaires
 <input type="checkbox" name="connaissances[]" value="JavaScript">JavaScript
 </fieldset>
 <br><br>
 <input type="submit" name="valider" value=" Envoyer "> &nbsp&nbsp&nbsp
-<input type="reset" value="Annuler">
+<input type="reset" value="Annuler"> -->
 </fieldset>
 </form>
 <?php
 
 
-if(isset($_POST['nom']) 
-&& isset($_POST['prenom'])
-&& isset($_POST['ladate'])
-&& isset($_POST['lieu'])
-&& isset($_POST['adressepostale'])
-&& isset($_POST['cp'])
-&& isset($_POST['email'])
-&& isset($_POST['site'])
-&& isset($_POST['telephone'])
-&& isset($_POST['semestre'])
-&& isset($_POST['niveauhtml'])){
+if(isset($_POST['email']) 
+// && isset($_POST['prenom'])
+// && isset($_POST['ladate'])
+// && isset($_POST['lieu'])
+// && isset($_POST['adressepostale'])
+// && isset($_POST['cp'])
+// && isset($_POST['email'])
+// && isset($_POST['site'])
+// && isset($_POST['telephone'])
+// && isset($_POST['semestre'])
+&& isset($_POST['pseudo'])){
 
   //L'objet du mail
   $objet = "Confirmation de votre message sur GeekTeam";
 
   $texte ="Nous avons bien reçu votre message \n";
-  $texte .= "Votre nom est : ".$_POST['nom']."\n";
-  $texte .= "Votre prénom est : ".$_POST['prenom']."\n";
-  $texte .= "Votre date de naissance est : ".$_POST['ladate']."\n";
-  $texte .= "Votre adresse postale est : ".$_POST['adressepostale']."\n";
-  $texte .= "Votre code postale est : ".$_POST['cp']."\n";
-  $texte .= "Votre email est : ".$_POST['email']."\n";
-  $texte .= "Votre site est : ".$_POST['site']."\n";
-  $texte .= "Votre téléphone est : ".$_POST['telephone']."\n";
-  $texte .= "Votre semestre est : ".$_POST['semestre']."\n";
-  $texte .= "Votre niveau de connaissnce est : ".$_POST['niveauhtml']."\n";
+  $texte .= "Votre nom est : ".$_POST['pseudo']."\n";
+  $texte .= "Votre prénom est : ".$_POST['email']."\n";
+  // $texte .= "Votre date de naissance est : ".$_POST['ladate']."\n";
+  // $texte .= "Votre adresse postale est : ".$_POST['adressepostale']."\n";
+  // $texte .= "Votre code postale est : ".$_POST['cp']."\n";
+  // $texte .= "Votre email est : ".$_POST['email']."\n";
+  // $texte .= "Votre site est : ".$_POST['site']."\n";
+  // $texte .= "Votre téléphone est : ".$_POST['telephone']."\n";
+  // $texte .= "Votre semestre est : ".$_POST['semestre']."\n";
+  // $texte .= "Votre niveau de connaissnce est : ".$_POST['niveauhtml']."\n";
   $texte .= "Cordialement \n";
   $texte .= "L'équipe Geek Team";
 
-  $corps = '<html>
+  $message = '<html>
   <head>
   <title>Envoi de mail HTML</title>
   </head>
@@ -115,12 +115,12 @@ if(isset($_POST['nom'])
 
 
   //Fonction mail qui permet l'envoie d'emails
-  if(mail($_POST['email'], $objet, $corps, $entete)){
+  if(mail($email, $objet, $message, $entete)){
       
       echo "Super votre message a bien été envoyé";
   }
   else{ echo "désolé votre message n'a pas été envoyé, Merci d'essayer à nouveau";}
-}
+
 ?>
 
   </body>
