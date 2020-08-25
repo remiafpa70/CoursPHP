@@ -62,7 +62,7 @@ if(!$idcom){
             $_SESSION['id_membre'] = $coord[1];
             $_SESSION['pseudo'] = $_POST['pseudo'];
             
-            header('Location: hubPages.php');
+            header('Location: index.php');
         }
     
     $idcom->close();

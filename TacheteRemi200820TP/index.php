@@ -2,9 +2,7 @@
 // session_start();
 // if(isset($_SESSION['pseudo']) && isset($_SESSION['id_membre'])){
 //     $id_membre = $_SESSION['id_membre'];
-
 ?>
-
 <!DOCTYPE html>  <!--type de langage ici html et éventuellemnt sa version-->
 <html lang="fr">
 >
@@ -16,12 +14,20 @@
 </head>
 
 <body>   <!--définit, cette fois, le corps de votre document, c'est la partie visible de votre page web, c'est à cet endroit que nous mettrons du texte, des images, et toute autre information-->
-<h1>Bienvenu chez TACHETETOU</h1> <!--titre de la page (taille 1) par convention & seul titre pour le référencement-->
+<h1>BIENVENU CHEZ TACHETETOU</h1> <!--titre de la page (taille 1) par convention & seul titre pour le référencement-->
+<?php 
+    //    echo "Bienvenue à toi ".$_SESSION['pseudo'] ;
+    ?>    
+    <h2> CHOISIR UN DES SERVICES PROPOSE</h2>
         <p>mon premier paragraphe de texte qui l'accompagne !!</p>  <!--paragraphe (nous pouvons en mettre autant qu'on le souhaite !)-->
         
         
         <nav>  <!--permet de prévoir un emplacement (ou une zone) pour votre menu de navigation. En général, nous y retrouvons des liens.-->
-             
+        <a href="">Accueil</a>
+            <a href="">Actualité</a>
+            <a href="">Boutique</a>
+            <a href="">Panier</a>
+            <a href="">Qui sommes nous ?</a>
         </nav>
          
         <section><!--permettant de prévoir un emplacement (ou une zone) pour le contenu de votre site web. Nous y retrouverons plutôt un titre, du texte, des images, etc-->
@@ -31,6 +37,18 @@
                 </span>
             </div>
         </section>
+        <fieldset id="main">
+    <legend>Notre formulaire : </legend>
+    <form action="index.php" method="post">
+ 
+
+    <form>
+    <a href="commandesClients.php">Visualiser les commandes passées par les employés </a><br><br>
+    <a href="listePrix.php">Modifier un prix produit </a><br><br>
+    <a href="listeProduitsClients.php">Visualiser les sociétés qui ont commandées un type de produit </a><br><br>
+
+    </form>
+    </fieldset>
          
         <article><!--permet de prévoir une zone de texte-->
              
@@ -40,7 +58,7 @@
          
         </footer>
              
-        </nav>
+       
          
         <section>
             <div>
@@ -53,46 +71,55 @@
         <article>
              
         </article>
-         
+        <?php
+    // }
+    // else {echo "Vous n'êtes pas autorisé à visiter cette page <br/>";
+    //       echo "<a href = \"connexion.php\">Merci de vous connecter</a> ";}
+    
+    ?>
+    <?php
+    //Inclusion des paramètres de connexion
+include_once('myparam.inc.php');
 
-        <!-- <header></header>
-<h1> BIENVENU CHEZ TACHETE</h1>
-<fieldset id="main">
-    <legend>Notre formulaire :</legend>
-    <form action="index.php" method="post">
-    <a href="inscription.php">pour vous inscrire c'est par ici</a><br><br> 
-    <a href="deconnexion.php">Déconnexion</a><br><br>
-        <label>Nom:</label>
-        <input type="text" name="nom" value="MINKOUE OBAME"><br><br>
-        <label>Prénom:</label>
-        <input type="text" name="prenom" value="Anouchka"><br><br>
-        <label>Date:</label>
-        <input type="date" name="ladate"><br><br>
-        <fieldset>
-            <legend>Lieu de naissance:</legend>
-            <input type="radio" name="lieu" value="Saint Denis">Saint Denis
-            <input type="radio" name="lieu" value="Reste du monde">Reste du monde
-        </fieldset>
-        <br><br>
-        <label>Adresse postale:</label><textarea rows="2" col="30" name="adressepostale"
-                                                 value="">Je suis ici et là...</textarea>
-        <br><br>
-        <label>Code postal:</label><input type="text" pattern="[0-9]{5}" placeholder="Saissisez 5 chiffres maximum"
-                                          name="cp" value="76190">
-        <br><br>
-        <label>E-mail:</label><input type="email" name="email" value="example@gmail.com">
-        <br><br>
-        <label>Site:</label><input type="url" name="site" value="https://www.google.com">
-        <br><br>
-        <label>Téléphone:</label>
-        <input type="text" name="telephone" pattern="0[6-7][0-9]{8}" value="0658898531"
-               placeholder="Exemple : 0602030405 sans espace ni tirets">
-        <br><br>
-        <label>Semestre:</label>
-        <select name="semestre" size=3>
-            <option>S1</option>
-            <option selected>S2</option> <!--Selection par défaut du choix S2 -->
-            <option>S3</option>
+//Connexion au serveur de base de données MySQL
+$idcom = new mysqli(MYHOST, MYUSER, MYPASS, "facturation2");
+
+//Test de la connexion
+if(!$idcom){
+    echo "Connexion impossible";
+    exit(); //On arrete tout, on sort du script
+}
+    
+    if(!empty($_POST['pseudo']) && !empty($_POST['password'])){
+       
+        $pseudo = $idcom->escape_string($_POST['pseudo']);
+        $password = $idcom->escape_string($_POST['password']);
+
+        //Ecrire la requete qui va récupérer le pseudo, password et id_membre
+        $requete = "SELECT password, id_membre FROM membres WHERE pseudo = '$pseudo' ";
+
+        $result = $idcom->query($requete);
+        
+        //$result->fetch_row() c'est-à-dire qu'on applique la fonction fetch_row à $result
+        $coord = $result->fetch_row();
+        // var_dump($coord);
+        if($coord && password_verify($_POST['password'], $coord[0])){
+            session_start();
+            $_SESSION['id_membre'] = $coord[1];
+            $_SESSION['pseudo'] = $_POST['pseudo'];
+            
+            header('Location: commandesClients.php');
+        }
+    
+    $idcom->close();
+       
+    }
+    else{ echo "Veuillez vous connecter"; 
+        echo "</a><br><br><a href=\"deconnexion.php\">Déconnexion</a><br><br>";}
+       
+    ?>     
+
+            <!-- <option>S3</option>
             <option>S4</option>
         </select>
         <br><br>
@@ -103,13 +130,13 @@
             <legend>Connaissances:</legend>
             <input type="checkbox" checked="checked" name="connaissances[]" value="HTML">HTML
             <!--Selection par défaut du choix HTML -->
-            <input type="checkbox" name="connaissances[]" value="CSS">CSS
+            <!-- <input type="checkbox" name="connaissances[]" value="CSS">CSS
             <input type="checkbox" name="connaissances[]" value="Formulaires">Formulaires
             <input type="checkbox" name="connaissances[]" value="JavaScript">JavaScript
         </fieldset>
-        <br><br>
-        <input type="submit" name="valider" value=" Envoyer "> &nbsp&nbsp&nbsp
-        <input type="reset" value="Annuler"> -->
+        <br><br> -->
+        <!-- <input type="submit" name="valider" value=" Envoyer "> &nbsp&nbsp&nbsp
+        <input type="reset" value="Annuler"> --> --> -->
     </form>
 </fieldset>
 <br>

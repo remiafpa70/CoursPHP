@@ -11,67 +11,14 @@
   <h1> Bienvenu sur notre formulaire de contact</h1>
 <fieldset id="main">
 <legend>Notre formulaire :</legend>
-<!-- <form action="<?= $_SERVER['PHP_SELF'] ?> " method="post"
-enctype="application/x-www-form-urlencoded" > 
-<label>Nom:</label>
-<input type="text" name="nom" value="VotreNom"><br><br>
-<label>Prénom:</label>
-<input type="text" name="prenom" value="votrePrénom" ><br><br>
-<label>Date:</label>
-<input type="date" name="ladate" ><br><br>
-<fieldset>
-<legend>Lieu de naissance: </legend>
-<input type="radio" name="lieu" value="Saint Denis">Saint Denis
-<input type="radio" name="lieu" value="Reste du monde">Reste du monde
-</fieldset>
-<br><br>
-<label>Adresse postale:</label><textarea rows="2" col="30" name="adressepostale" value="VotreAdresse"></textarea>
-<br><br>
-<label>Code postal:</label><input type="text" pattern="[0-9]{5}" placeholder="Saissisez 5 chiffres maximum" name="cp" value="94000">
-<br><br>
-<label>E-mail:</label><input type="email" name="email" value="remiafpa70@gmail.com">
-<br><br>
-<label>Site:</label><input type="url" name="site" value="http://www.Votre.page.Web.com">
-<br><br>
-<label>Téléphone:</label>
-<input type="text" name="telephone" pattern="0[6-7][0-9]{8}" value="0658898531" placeholder="Exemple : 0602030405 sans espace ni tirets" >
-<br><br>
-<label>Semestre:</label> 
-<select name="semestre" size = 3>
-         <option>S1</option>
-         <option selected>S2</option> 
-         <option>S3</option>
-         <option>S4</option>
-      </select>   
-<br><br>
-<label>Niveau en HTML:</label>
-<input type="range" name="niveauhtml" value="" max="10" min="0" step="1">
-<br><br>
-<fieldset id="fconnaissances">
-<legend>Connaissances: </legend>
-<input type="checkbox" checked="checked" name="connaissances[]" value="HTML">HTML 
-<input type="checkbox" name="connaissances[]" value="CSS">CSS
-<input type="checkbox" name="connaissances[]" value="Formulaires">Formulaires
-<input type="checkbox" name="connaissances[]" value="JavaScript">JavaScript
-</fieldset>
-<br><br>
-<input type="submit" name="valider" value=" Envoyer "> &nbsp&nbsp&nbsp
-<input type="reset" value="Annuler"> -->
+
 </fieldset>
 </form>
 <?php
 
 
 if(isset($_POST['email']) 
-// && isset($_POST['prenom'])
-// && isset($_POST['ladate'])
-// && isset($_POST['lieu'])
-// && isset($_POST['adressepostale'])
-// && isset($_POST['cp'])
-// && isset($_POST['email'])
-// && isset($_POST['site'])
-// && isset($_POST['telephone'])
-// && isset($_POST['semestre'])
+
 && isset($_POST['pseudo'])){
 
   //L'objet du mail
@@ -80,14 +27,7 @@ if(isset($_POST['email'])
   $texte ="Nous avons bien reçu votre message \n";
   $texte .= "Votre nom est : ".$_POST['pseudo']."\n";
   $texte .= "Votre prénom est : ".$_POST['email']."\n";
-  // $texte .= "Votre date de naissance est : ".$_POST['ladate']."\n";
-  // $texte .= "Votre adresse postale est : ".$_POST['adressepostale']."\n";
-  // $texte .= "Votre code postale est : ".$_POST['cp']."\n";
-  // $texte .= "Votre email est : ".$_POST['email']."\n";
-  // $texte .= "Votre site est : ".$_POST['site']."\n";
-  // $texte .= "Votre téléphone est : ".$_POST['telephone']."\n";
-  // $texte .= "Votre semestre est : ".$_POST['semestre']."\n";
-  // $texte .= "Votre niveau de connaissnce est : ".$_POST['niveauhtml']."\n";
+
   $texte .= "Cordialement \n";
   $texte .= "L'équipe Geek Team";
 
