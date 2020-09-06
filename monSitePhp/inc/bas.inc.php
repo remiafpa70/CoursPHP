@@ -1,17 +1,17 @@
     <footer>
         <div class="logos">
             <div class="logo2">
-                <img src="img\twitter.jpg" alt=twitter , height=30px, width=30px>
+                <img src="../img\twitter.jpg" alt=twitter , height=30px, width=30px>
                 <!-- <p> Faites nous part de votre problème <br>
                         et nous trouverons la solution adaptée</p> -->
             </div>
             <div class="logo2">
-                <img src="img\youtube.png" alt=youtube , height=30px, width=30px>
+                <img src="../img\youtube.png" alt=youtube , height=30px, width=30px>
                 <!-- <p>Nous vous faisons économiser <br>
                         de l'argent et du temps</p> -->
             </div>
             <div class="logo2">
-                <img src="img\renault.jpg" alt=renault width=100>
+                <img src="../img\renault.jpg" alt=renault width=100>
                 <!-- <p>N'hésitez pas à nous contacter, nous <br>sommes à votre écoute,
                         constamment</p> -->
             </div>
@@ -19,7 +19,7 @@
                 © Copyright 2020
             </div>
             <div class="instagram">
-                <img src="img\Instagram_AppIcon_Aug2017.png" , height=30px, width=30px>
+                <img src="../img\Instagram_AppIcon_Aug2017.png" , height=30px, width=30px>
             </div>
             <div class="whatsapp">
                 <img src="https://whatsappbrand.com/wp-content/themes/whatsapp-brc/images/WhatsApp_Logo_1.png" ,

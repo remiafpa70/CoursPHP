@@ -15,7 +15,7 @@
  
         <!-- CSS -->
         <!-- <link rel        = "stylesheet" href    = "css/style.css"> -->
-        <link rel             = "stylesheet" href    = "css/style.css">
+        <link rel             = "stylesheet" href    = "../css/style.css">
 
         <!-- JS -->
         <script src           = "http                : //html5shiv.googlecode.com/svn/trunk/html5.js"></script>  
@@ -30,7 +30,7 @@
         <header>
             <div class        = "container">
                 <div class    = "header-logo">
-                     <img class="logo" src = "img/Tesla-logo-1.jpg">
+                     <img class="logo" src = "../img/Tesla-logo-1.jpg">
                 </div>
                 
                     <div class    = "title-h1">

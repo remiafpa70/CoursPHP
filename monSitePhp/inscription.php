@@ -12,7 +12,7 @@
 <?php //Inclusion des paramètres de connexion
 
 
-include("inc\myparam.inc.php");
+include("C:\wamp64\www\CoursPHP\monSitePhp\Core\myparam.inc.php");
 
 //Connexion au serveur de base de données MySQL
 $idcom=new mysqli(MYHOST, MYUSER, MYPASS, "facturation2", PORT);
