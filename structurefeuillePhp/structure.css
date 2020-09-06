@@ -1,0 +1,53 @@
+/* commentaire en css */
+body {
+  height: 30px;
+  background: #162add;
+}
+
+header {
+  height: 100px;
+  background: #f98f32;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.div1 {
+  height: 30px;
+  background: #daee24;
+}
+
+.div2 {
+  height: 30px;
+  background: #a41ca8;
+}
+
+nav {
+  height: 30px;
+  background: #20ddf2;
+}
+
+section {
+  min-height: 300px;
+  background: #f2f220;
+}
+
+.div3 {
+  height: 30px;
+  background: #cfdfe0;
+}
+
+span {
+  height: 30px;
+  background: #e41a1a;
+}
+
+article {
+  min-height: 200px;
+  background: #c24c4c;
+}
+
+footer {
+  height: 100px;
+  background: #a0e7a6;
+}
