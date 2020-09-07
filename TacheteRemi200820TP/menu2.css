@@ -1,0 +1,8 @@
+nav  ul li { float:left; list-style: none; }
+nav  ul ul {display:none; width:150px;}
+nav  li {background:#CCCCCC;}
+nav  li a {text-decoration: none; color: #000; padding: 4px 0 4px; display:block; width:150px;}
+nav  ul {padding: 0; margin:0px; text-align:center;}
+nav  ul.niveau1 li.sousmenu:hover ul.niveau2{display:block;}
+nav  li:hover {background: #EDD;}
+nav  li.sousmenu:hover {background: #EBB;}

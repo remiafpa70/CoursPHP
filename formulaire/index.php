@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>  <!--formulaire à remplir et envoi par mail de confirmation que tout est bien enregistré-->
 <html lang="fr">
   <head>
     <meta charset="utf-8" />

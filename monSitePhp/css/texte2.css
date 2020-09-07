@@ -1,0 +1,25 @@
+/* utilisation d'une police css3 à l'aide d'une url */
+/* @font-face {
+    font-family: 'Cabin';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cabin Regular'), local('Cabin-Regular'), url(https://fonts.gstatic.com/s/cabin/v8/yQOMOX5hR0-6LTD879t-PQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+  }
+   
+  body{
+      font-family: "Cabin";
+  }
+  h1{
+  text-align: center; /* alignement du texte */
+  /* color: #336699; couleur */
+  /* letter-spacing: 3px; espacement entre les lettres */
+  /* font-size: 50px; taille */
+  } */
+
+
+  html, body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9em;
+    }
