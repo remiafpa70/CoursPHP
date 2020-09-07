@@ -1,0 +1,8 @@
+Exercice 5: 
+On reprend l’exercice sur la création de la classe Véhicule, 
+quelles modifications peut-on faire sur la visibilité des propriétés. 
+
+Créer une classe dérivée (classe fille) appelée Voiture qui hérite 
+de la classe Véhicule tout lui ajoutant deux attributs marque et volume 
+de carburant ainsi qu’une méthode permettant de savoir l’état de démarrage 
+selon le volume du carburant.

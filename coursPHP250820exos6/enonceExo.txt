@@ -1,0 +1,14 @@
+Exercice 6: héritage
+Créez une classe représentant une personne. 
+Elle déclare les propriétés nom et prénom et un constructeur.
+
+Créez une classe client dérivée de la classe personne en y ajoutant 
+la propriété adresse et une méthode getCoordonnee() qui affiche les 
+coordonnées complètes de la personne.
+
+Créez une classe électeur dérivée de la même classe, 
+et ajoutez-y deux propriétés bureau de vote et vote, 
+ainsi que deux méthodes ; une méthode booleen qui permet retourner 
+la valeur True à l’attribut vote et une autre méthode isVoter qui permet 
+de tester si un électeur a voté.
+

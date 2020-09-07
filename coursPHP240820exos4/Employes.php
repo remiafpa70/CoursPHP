@@ -23,6 +23,14 @@ Class Employes {
         $this->prenom=$prenom;
         }
 
+$prenom = trim($prenom); // la fontion trim permet de vérifier si une variable est vide
+if ($prenom === "") {
+echo "Le prénom ne doit pas être vide <br>";
+} else {
+$this->prenom = $prenom;
+}
+}
+
 public function getPrenom(){
     return $this->prenom;
 }

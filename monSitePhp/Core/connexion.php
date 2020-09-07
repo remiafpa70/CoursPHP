@@ -1,5 +1,5 @@
-<?php require_once('inc/haut.inc.php'); ?>
-<?php require_once('inc/menu.inc.php'); ?>
+<?php require_once('../inc/haut.inc.php'); ?>
+<?php require_once('../inc/menu.inc.php'); ?>
 
 <?php
 // session_start();
@@ -40,7 +40,7 @@
 
 
     //Inclusion des paramètres de connexion
-include("inc\myparam.inc.php");
+include("..\inc\myparam.inc.php");
 
 //Connexion au serveur de base de données MySQL
 $idcom = new mysqli(MYHOST, MYUSER, MYPASS, "facturation2", PORT);
@@ -87,7 +87,7 @@ if(!$idcom){
        
     ?>
 
-<?php require_once('inc/bas.inc.php'); ?>
+<?php require_once('../inc/bas.inc.php'); ?>
 
 </body>
 

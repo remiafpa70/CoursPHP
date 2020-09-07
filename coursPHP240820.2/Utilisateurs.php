@@ -31,7 +31,7 @@ function degreImplication(){  //par défaut si on ne met rien devant fonction c'
     else{
         echo 'la contribution de cet utilisateur est insuffisante';
     }
-
+}
     function seConnecter(){
     echo "je suis un utilisateur de votre application, je peux me connecter";
     }
@@ -40,7 +40,7 @@ function degreImplication(){  //par défaut si on ne met rien devant fonction c'
         echo "je ne suis pas un utilisateur de votre application, je ne peux pas me connecter";
         }
 
-    public function recupereAge(){
+     function recupereAge(){
             return $this->age;
             }
 
@@ -74,7 +74,7 @@ return $this->age;
 }
     
 public function setEmail($email){  // permet de faire une vérification sur le mail et de faire une exception
-    if (filter_var($email, FILTER-VALIDATE_EMAIL)){
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)){
     $this->email=$email;    
     }
     else{
@@ -84,7 +84,15 @@ public function setEmail($email){  // permet de faire une vérification sur le m
 
 public function getEmail(){
 return $this->email;
-}        
+}     
+
+public function setNote($note){
+    $this->note=$note;
+    }
+
+public function getNote(){
+return $this->note;
+}
 }
 
 ?>

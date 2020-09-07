@@ -12,7 +12,6 @@ Class Vehicule {
         echo "je suis le constructeur et je suis exécuté<br/>";
     }
 
- 
     public function setType($type){
                 $this->type=$type;
                 }
@@ -27,8 +26,9 @@ Class Vehicule {
 
     public function getNbrPlaces(){
     return $this->nbrPlaces;
-}
+    }
 
+    
 }
 
 ?>
