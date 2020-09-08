@@ -1,4 +1,5 @@
 <?php
+//départ du programme, Vues ou Views est l'interface graphique de l'architecture MVC
 
 require_once 'Vues/header.html';
 require_once 'Controleurs/LivreController.php';
@@ -16,7 +17,7 @@ if (isset($_GET['action'])){       // permet de tester l'url de la page
 
 }
 else{
-    var_dump('liste');
+    $livre->afficherLivre();
 }
 
 

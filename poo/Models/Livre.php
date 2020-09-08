@@ -1,3 +1,7 @@
+<!--Models contient les données ainsi que de la logique en rapport avec les données :
+ validation, lecture et enregistrement dans l'architecture MVC-->
+
+
 <?php
 
 class Livre{
@@ -35,26 +39,44 @@ public function setResume($resume){
 }
 
 public function getConnection()
-{try{
-    $db = new PDO('mysql:host=localhost;dbname=biblio',
-    "remsafpa70","rems70");
-}
-catch (PDOEception $e){
-    print "erreur";
+	{
+		try{
+			$bdd = new PDO('mysql:host=localhost;dbname=biblio', "root", "");
+		}
+		catch ( PDOException $e){
+			print "Erreur".$e->getMessage();
+		}
 
-}
-}
- public function insert($titre, $auteur, $resume)
- {
-     $bdd = $this->getConnection();
+		return $bdd;
+	}
 
-     $sql = $bdd->prepare(" INSERT INTO livre (titre, auteur, resume) VALUES ('$titre','$auteur','$resume')");
- 
- if(!$sql->execute())
-{
-    die("Oups, il y a une erreur dans la requète");
-}   
-header("Location: index.php");
-}
+	public function insert($titre, $auteur, $resume)
+	{
+		$bdd = $this->getConnection();
+
+		$sql = $bdd->prepare(" INSERT INTO livre (titre, auteur, resume) VALUES ('$titre', '$auteur','$resume')");
+
+		$sql->execute();
+		
+		if (!$sql->execute()){
+			die("Oups, il y'a une erreur dans la requete");
+		}
+
+		header("Location: index.php");
+
+	}
+
+	public function list()
+	{ 
+		$bdd = $this->getConnection();
+
+		$sql = $bdd->prepare('SELECT * FROM livre');
+		
+		$sql->execute();
+		 
+		$resultat = $sql->fetchAll(PDO::FETCH_CLASS, 'Livre');
+		
+		return $resultat;
+	}
 }
 ?>
