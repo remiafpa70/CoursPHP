@@ -1,0 +1,124 @@
+.title-h1 html {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	text-align: center;
+	font-family: verdana;
+	font: 75% georgia, sans-serif;
+	line-height: 1.88889;
+	color: #55144a;
+	background-color: aquamarine;
+	/* background: #fff url(http://csszengarden.com/001/blossoms.jpg) no-repeat bottom right; */
+	margin: 0;
+	padding: 0;
+}
+
+
+
+header {
+	display: flex;
+	align-items: center;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	height: 260px;
+	border: 2px solid;
+	background: #f98f32;
+}
+
+
+.h1 {
+
+	background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5));
+
+	text-align: center;
+	/* alignement */
+	font-size: 20px;
+	/* taille du texte */
+	font-weight: bold;
+	/* gras */
+	margin: 10px 9px 8px 7px;
+	/* marges ext. */
+	padding: 20px;
+	/* marges int. */
+	border: 1px solid;
+
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	flex: 1;
+	align-items: center;
+	justify-content: space-around;
+	height: 260px;
+	background: #b5caa8;
+	border: 3px solid;
+}
+
+
+.logo {
+	display: flex;
+	align-items: center;
+	border: 3px solid height: 80px;
+	width: 80px;
+}
+
+
+nav {
+	display: flex;
+	flex-wrap: wrap;
+	flex: 1;
+	display: inline;
+	list-style: none;
+	text-align: center;
+	height: 70px;
+	background: #f98f32;
+
+}
+
+li {
+	display: inline;
+	list-style: none;
+	text-align: center;
+	height: 70px;
+	background: #f98f32;
+
+}
+
+footer {
+	height: 90px;
+	background: #f98f32;
+}
+
+.logos {
+	display: flex;
+	float: left;
+	margin: auto;
+	flex-wrap: wrap;
+	flex: 1;
+	align-items: center;
+	justify-content: space-evenly;
+	height: 80px;
+	background: #b5caa8;
+	border: 3px solid;
+}
+
+.liensMonSite {
+	display: flex;
+	flex-wrap: wrap;
+	flex: 1;
+	align-items: center;
+	justify-content: space-evenly;
+	height: 80px;
+	background: #fc0dc0;
+	border: 3px solid;
+
+}
+
+.tableau{
+	border: 3px solid;
+}
