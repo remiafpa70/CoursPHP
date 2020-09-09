@@ -1,24 +1,26 @@
 <?php
-//départ du programme, Vues ou Views est l'interface graphique de l'architecture MVC
+//départ du programme
 
 require_once 'Vues/header.html';
 require_once 'Controllers/ConducteurController.php';
 
 $conducteur = new ConducteurController();
 
-if (isset($_GET['action'])){       // permet de tester l'url de la page
+$conducteur->nouveauConducteur();
 
-    if (isset($_GET['action']) == 'ajouter') {
+// if (isset($_GET['action'])){       // permet de tester l'url de la page
 
-        var_dump('ajouter');
-        $livre->ajouterLivre();
-    }
+//     if (isset($_GET['action']) == 'ajouter') {
+
+//         var_dump('ajouter');
+//         $livre->ajouterLivre();
+//     }
 
 
-}
-else{
-    $conducteur->afficherConducteur();
-}
+// }
+// else{
+//     $conducteur->afficherConducteur();
+// }
 
 
 

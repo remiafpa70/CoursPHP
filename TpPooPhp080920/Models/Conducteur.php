@@ -1,16 +1,16 @@
 <!--Models contient les données ainsi que de la logique en rapport avec les données :
  validation, lecture et enregistrement dans l'architecture MVC-->
-
-
 <?php
 
-class Conducteur{
-private $id;
+require_once './Models/Model.php';
+
+class Conducteur extends Model{
+private $id_conducteur;
 private $nom;
 private $prenom;
 
-public function getId(){
-    return $this->id;
+public function getIdConducteur(){
+    return $this->id_conducteur;
 }
 
 
@@ -30,33 +30,32 @@ public function setAuteur($prenom){
 }
    
 
-public function getConnection()
+// public function getConnection()
+// 	{
+// 		try{
+// 			$bdd = new PDO('mysql:host=localhost;dbname=vtc', "root", "");
+// 		}
+// 		catch ( PDOException $e){
+// 			print "Erreur".$e->getMessage();
+// 		}
+
+// 		return $bdd;
+// 	}
+
+	public function create($nom, $prenom )
 	{
-		try{
-			$bdd = new PDO('mysql:host=localhost;dbname=vtc', "root", "");
+		$bdd = Model::getConnection();  // on appelle le parent
+
+		$requete = $bdd->prepare(" INSERT INTO conducteur (prenom, anom) VALUES ('$prenom', '$nom')");
+
+		if(!$requete->execute())
+		{
+			die("ATTENTION!!!!");
 		}
-		catch ( PDOException $e){
-			print "Erreur".$e->getMessage();
-		}
-
-		return $bdd;
-	}
-
-	// public function insert($titre, $auteur, $resume)
-	// {
-	// 	$bdd = $this->getConnection();
-
-	// 	$sql = $bdd->prepare(" INSERT INTO livre (titre, auteur, resume) VALUES ('$titre', '$auteur','$resume')");
-
-	// 	$sql->execute();
 		
-	// 	if (!$sql->execute()){
-	// 		die("Oups, il y'a une erreur dans la requete");
-	// 	}
+		header("Location: index.php");
 
-	// 	header("Location: index.php");
-
-	// }
+	}
 
 	public function list()
 	{ 

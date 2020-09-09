@@ -8,33 +8,40 @@ require_once './Models/Conducteur.php';
 
 class ConducteurController
 {
-// public function ajouterLivre()
-// {
-    
-//     var_dump("mon rôle est d'ajouter des livres en base");
-
-//     require_once './Vues/ajoutLivre.html';
-
-//     $livre = new Livre();
-//     if(isset($_POST['submit'])){
-//     $titre = $livre->setTitre($_POST['titre']);   
-//     $auteur = $livre->setAuteur($_POST['auteur']);   
-//     $resume = $livre->setResume($_POST['resume']);
-
-   
-//     $livre->insert($titre, $auteur, $resume);        
-//             }
-//         }
-
-    public function afficherConducteur()
-    {   
-    $conducteur = new Conducteur();
-    $affichage = $conducteur->list();
-   
-    require_once "./Vues/afficherConducteur.php";      
-    }
+public function nouveauConducteur()
+    {
         
+        var_dump("mon rôle est d'ajouter des livres en base");
+
+        require_once './Vues/formulaire_nouveau_conducteur.html';
+
+        $conducteur = new Conducteur();
+        
+        if(isset($_POST['submit']))
+        {
+        $prenom = $condcuteur->setPrenom($_POST['prenom']);   
+        $nom = $condcuteur->setPrenom($_POST['nom']); 
+        
+        $condcuteur->create($prenom, $nom); 
+        
+
+
+    
+        // $livre->insert($titre, $auteur, $resume);        
+        //         }
+        //     }
+
+        // public function afficherConducteur()
+        // {   
+        // $conducteur = new Conducteur();
+        // $affichage = $conducteur->list();
+    
+        // require_once "./Vues/afficherConducteur.php";      
+        // }
+            
+        }
     }
+}
 ?>
 
 
